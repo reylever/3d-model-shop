@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  web:
+    build: 
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: php_web
+    ports:
+      - "8080:80"        # сайт: http://localhost:8080
+    volumes:
+      - ../src:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: shop
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db             # имя сервиса MySQL
+      PMA_USER: root           # логин MySQL
+      PMA_PASSWORD: root       # пароль MySQL
+      UPLOAD_LIMIT: 128M
+    ports:
+      - "8081:80"              # phpMyAdmin: http://localhost:8081
+
+volumes:
+  db_data:
