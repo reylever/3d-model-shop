@@ -1,0 +1,67 @@
+/* Стили для страницы 404 */
+.error-404 {
+  text-align: center;
+  padding: 60px 20px;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-404 h1 {
+  font-size: 8rem;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+  color: #ff5050;
+  text-shadow: 0 4px 12px rgba(255, 80, 80, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.error-404 p {
+  font-size: 1.5rem;
+  margin-bottom: 2em;
+  color: #666;
+  font-weight: 400;
+}
+
+.error-404 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+}
+
+.error-404 a i {
+  font-size: 1.2rem;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .error-404 h1 {
+    font-size: 5rem;
+  }
+  
+  .error-404 p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .error-404 h1 {
+    font-size: 4rem;
+  }
+  
+  .error-404 p {
+    font-size: 1rem;
+  }
+}
