@@ -1,39 +1,102 @@
 <link rel="stylesheet" href="assets/css/style.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<header class="header">
+    <nav class="navbar">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img src="assets/img/logo.png" alt="Яшин стаффчик" height="40" class="me-2">
-                <span>Яшин Стаффчик</span>
+            <a href="index.php" class="logo">
+                <img src="assets/img/logo.png" alt="Яшин стаффчик" class="logo__img">
+                <span class="logo__text">Яшин Стаффчик</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            
+            <button class="navbar__toggle" id="navToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle fw-semibold" href="#" id="catalogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Каталог
-                        </a>
-                        <ul class="dropdown-menu shadow-lg border-0 rounded-3 p-2 animate__animated animate__fadeIn" aria-labelledby="catalogDropdown" style="min-width: 220px;">
-                            <li><h6 class="dropdown-header text-secondary fs-6 fw-bold border-bottom pb-2 mb-2">Категории 3D моделей</h6></li>
-                            <li><a class="dropdown-item fs-6 py-2 rounded" href="#"><i class="bi bi-person-fill me-2 text-primary"></i>Персонажи</a></li>
-                            <li><a class="dropdown-item fs-6 py-2 rounded" href="#"><i class="bi bi-bullseye me-2 text-danger"></i>Оружие</a></li>
-                            <li><a class="dropdown-item fs-6 py-2 rounded" href="#"><i class="bi bi-house-door me-2 text-success"></i>Мебель</a></li>
-                            <li><hr class="dropdown-divider my-2"></li>
-                            <li><a class="dropdown-item text-primary fw-bold py-2" href="#"><i class="bi bi-grid me-2"></i>Все категории</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="cart.php">Корзина</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php">Вход</a></li>
-                </ul>
-            </div>
+            
+            <ul class="navbar__menu" id="navMenu">
+                <li class="navbar__item">
+                    <a href="index.php" class="navbar__link navbar__link--active">Главная</a>
+                </li>
+                <li class="navbar__item navbar__item--dropdown">
+                    <a href="#" class="navbar__link">
+                        Каталог
+                        <svg class="dropdown__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                    <ul class="dropdown__menu">
+                        <li class="dropdown__header">Категории 3D моделей</li>
+                        <li><a href="#" class="dropdown__link">
+                            <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
+                                <use href="#icon-person"/>
+                            </svg>
+                            Персонажи
+                        </a></li>
+                        <li><a href="#" class="dropdown__link">
+                            <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
+                                <use href="#icon-weapon"/>
+                            </svg>
+                            Оружие
+                        </a></li>
+                        <li><a href="#" class="dropdown__link">
+                            <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
+                                <use href="#icon-house"/>
+                            </svg>
+                            Мебель
+                        </a></li>
+                        <li class="dropdown__divider"></li>
+                        <li><a href="#" class="dropdown__link dropdown__link--all">Все категории</a></li>
+                    </ul>
+                </li>
+                <li class="navbar__item">
+                    <a href="cart.php" class="navbar__link">Корзина</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="login.php" class="navbar__link">Вход</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>
+
+<!-- SVG спрайты для иконок -->
+<svg style="display: none;">
+    <symbol id="icon-person" viewBox="0 0 16 16">
+        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+    </symbol>
+    <symbol id="icon-weapon" viewBox="0 0 16 16">
+        <path d="M12.5 3.5a.5.5 0 0 1 0 1h-1v1h1a.5.5 0 0 1 0 1h-1v1h1a.5.5 0 0 1 0 1h-1v1h1a.5.5 0 0 1 0 1h-1v.5a.5.5 0 0 1-1 0V11h-1v.5a.5.5 0 0 1-1 0V11h-1v.5a.5.5 0 0 1-1 0V11h-1v.5a.5.5 0 0 1-1 0V11h-.5a.5.5 0 0 1 0-1h.5v-1h-.5a.5.5 0 0 1 0-1h.5v-1h-.5a.5.5 0 0 1 0-1h.5v-1h-.5a.5.5 0 0 1 0-1h.5v-.5a.5.5 0 0 1 1 0V4h1v-.5a.5.5 0 0 1 1 0V4h1v-.5a.5.5 0 0 1 1 0V4h1v-.5a.5.5 0 0 1 1 0V4h.5z"/>
+    </symbol>
+    <symbol id="icon-house" viewBox="0 0 16 16">
+        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+    </symbol>
+</svg>
+
+<script>
+// Мобильное меню
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+
+navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Закрытие меню при клике вне его
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.navbar')) {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
+
+// Dropdown меню
+document.querySelectorAll('.navbar__item--dropdown').forEach(item => {
+    item.addEventListener('click', (e) => {
+        if (window.innerWidth <= 992) {
+            e.preventDefault();
+            item.classList.toggle('active');
+        }
+    });
+});
+</script>
