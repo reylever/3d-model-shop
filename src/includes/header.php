@@ -3,7 +3,7 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.php" class="logo">
-                <img src="assets/img/logo.png" alt="Яшин стаффчик" class="logo__img">
+                <img src="assets/img/logo/logo.png" alt="Яшин стаффчик" class="logo__img">
                 <span class="logo__text">Яшин Стаффчик</span>
             </a>
             

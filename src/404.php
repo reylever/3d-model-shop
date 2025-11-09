@@ -16,7 +16,7 @@
         <div class="error-404">
           <h1>404</h1>
           <p>Похоже, такой страницы не существует</p>
-          <a href="index.php" class="default_button">
+          <a href="./index.php" class="default_button">
             <i class="bi bi-house-door"></i> Вернуться на главную
           </a>
         </div>
