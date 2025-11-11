@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <link rel="stylesheet" href="assets/css/style.css">
 <header class="header">
     <nav class="navbar">
@@ -51,9 +56,33 @@
                 <li class="navbar__item">
                     <a href="cart.php" class="navbar__link">Корзина</a>
                 </li>
-                <li class="navbar__item">
-                    <a href="login.php" class="navbar__link">Вход</a>
-                </li>
+                
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <!-- Меню для авторизованного пользователя -->
+                    <li class="navbar__item navbar__item--dropdown">
+                        <a href="#" class="navbar__link">
+                            👤 <?= htmlspecialchars($_SESSION['username']) ?>
+                            <svg class="dropdown__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown__menu">
+                            <li><a href="profile.php" class="dropdown__link">👤 Профиль</a></li>
+                            <li><a href="orders.php" class="dropdown__link">🛍️ Мои заказы</a></li>
+                            <?php if ($_SESSION['is_admin']): ?>
+                                <li class="dropdown__divider"></li>
+                                <li><a href="admin/index.php" class="dropdown__link" style="color: #dc3545;">🛡️ Админ-панель</a></li>
+                            <?php endif; ?>
+                            <li class="dropdown__divider"></li>
+                            <li><a href="auth/logout.php" class="dropdown__link">🚪 Выход</a></li>
+                        </ul>
+                    </li>
+                <?php else: ?>
+                    <!-- Кнопка входа для неавторизованных -->
+                    <li class="navbar__item">
+                        <a href="login.php" class="navbar__link">Вход</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>
