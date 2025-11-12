@@ -1,7 +1,6 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Подключаем БД для работы с корзиной
+require_once __DIR__ . '/connect.php';
 ?>
 <link rel="stylesheet" href="assets/css/style.css">
 <header class="header">
@@ -23,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a href="index.php" class="navbar__link navbar__link--active">Главная</a>
                 </li>
                 <li class="navbar__item navbar__item--dropdown">
-                    <a href="#" class="navbar__link">
+                    <a href="catalog.php" class="navbar__link">
                         Каталог
                         <svg class="dropdown__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
                             <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -31,30 +30,45 @@ if (session_status() === PHP_SESSION_NONE) {
                     </a>
                     <ul class="dropdown__menu">
                         <li class="dropdown__header">Категории 3D моделей</li>
-                        <li><a href="#" class="dropdown__link">
+                        <li><a href="catalog.php?category=1" class="dropdown__link">
                             <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
                                 <use href="#icon-person"/>
                             </svg>
                             Персонажи
                         </a></li>
-                        <li><a href="#" class="dropdown__link">
+                        <li><a href="catalog.php?category=2" class="dropdown__link">
                             <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
                                 <use href="#icon-weapon"/>
                             </svg>
                             Оружие
                         </a></li>
-                        <li><a href="#" class="dropdown__link">
+                        <li><a href="catalog.php?category=3" class="dropdown__link">
                             <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
                                 <use href="#icon-house"/>
                             </svg>
                             Мебель
                         </a></li>
                         <li class="dropdown__divider"></li>
-                        <li><a href="#" class="dropdown__link dropdown__link--all">Все категории</a></li>
+                        <li><a href="catalog.php" class="dropdown__link dropdown__link--all">Все категории</a></li>
                     </ul>
                 </li>
                 <li class="navbar__item">
-                    <a href="cart.php" class="navbar__link">Корзина</a>
+                    <a href="cart.php" class="navbar__link cart-link">
+                        Корзина
+                        <?php
+                        // Получаем количество товаров в корзине
+                        if (isset($_SESSION['user_id'])) {
+                            $stmt = $pdo->prepare("SELECT SUM(quantity) as total FROM cart WHERE user_id = ?");
+                            $stmt->execute([$_SESSION['user_id']]);
+                            $cart_total = $stmt->fetch(PDO::FETCH_ASSOC);
+                            $cart_count = (int)$cart_total['total'];
+                            
+                            if ($cart_count > 0) {
+                                echo '<span class="cart-badge" id="cartBadge">' . $cart_count . '</span>';
+                            }
+                        }
+                        ?>
+                    </a>
                 </li>
                 
                 <?php if (isset($_SESSION['user_id'])): ?>
