@@ -54,7 +54,8 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <nav class="admin-nav">
                     <a href="index.php" class="admin-nav__link">📊 Дашборд</a>
                     <a href="add_products.php" class="admin-nav__link">➕ Добавить товар</a>
-                    <a href="manage_orders.php" class="admin-nav__link active">📦 Заказы</a>
+                    <a href="manage_products.php" class="admin-nav__link">📦 Управление товарами</a>
+                    <a href="manage_orders.php" class="admin-nav__link active">🛒 Заказы</a>
                     <a href="../catalog.php" class="admin-nav__link">🏠 На сайт</a>
                 </nav>
 

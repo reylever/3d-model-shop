@@ -1,13 +1,19 @@
 <?php
 // Подключаем БД для работы с корзиной
 require_once __DIR__ . '/connect.php';
+
+// Определяем базовый путь в зависимости от текущей директории
+$base_path = '';
+if (strpos($_SERVER['PHP_SELF'], '/admin/') !== false) {
+    $base_path = '../';
+}
 ?>
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="<?= $base_path ?>assets/css/style.css">
 <header class="header">
     <nav class="navbar">
         <div class="container">
-            <a href="index.php" class="logo">
-                <img src="assets/img/logo/logo.png" alt="Яшин стаффчик" class="logo__img">
+            <a href="<?= $base_path ?>index.php" class="logo">
+                <img src="<?= $base_path ?>assets/img/logo/logo.png" alt="Яшин стаффчик" class="logo__img">
                 <span class="logo__text">Яшин Стаффчик</span>
             </a>
             
@@ -19,10 +25,10 @@ require_once __DIR__ . '/connect.php';
             
             <ul class="navbar__menu" id="navMenu">
                 <li class="navbar__item">
-                    <a href="index.php" class="navbar__link navbar__link--active">Главная</a>
+                    <a href="<?= $base_path ?>index.php" class="navbar__link navbar__link--active">Главная</a>
                 </li>
                 <li class="navbar__item navbar__item--dropdown">
-                    <a href="catalog.php" class="navbar__link">
+                    <a href="<?= $base_path ?>catalog.php" class="navbar__link">
                         Каталог
                         <svg class="dropdown__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
                             <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -30,30 +36,30 @@ require_once __DIR__ . '/connect.php';
                     </a>
                     <ul class="dropdown__menu">
                         <li class="dropdown__header">Категории 3D моделей</li>
-                        <li><a href="catalog.php?category=1" class="dropdown__link">
+                        <li><a href="<?= $base_path ?>catalog.php?category=1" class="dropdown__link">
                             <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
                                 <use href="#icon-person"/>
                             </svg>
                             Персонажи
                         </a></li>
-                        <li><a href="catalog.php?category=2" class="dropdown__link">
+                        <li><a href="<?= $base_path ?>catalog.php?category=2" class="dropdown__link">
                             <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
                                 <use href="#icon-weapon"/>
                             </svg>
                             Оружие
                         </a></li>
-                        <li><a href="catalog.php?category=3" class="dropdown__link">
+                        <li><a href="<?= $base_path ?>catalog.php?category=3" class="dropdown__link">
                             <svg width="16" height="16" fill="currentColor" class="dropdown__icon-item">
                                 <use href="#icon-house"/>
                             </svg>
                             Мебель
                         </a></li>
                         <li class="dropdown__divider"></li>
-                        <li><a href="catalog.php" class="dropdown__link dropdown__link--all">Все категории</a></li>
+                        <li><a href="<?= $base_path ?>catalog.php" class="dropdown__link dropdown__link--all">Все категории</a></li>
                     </ul>
                 </li>
                 <li class="navbar__item">
-                    <a href="cart.php" class="navbar__link cart-link">
+                    <a href="<?= $base_path ?>cart.php" class="navbar__link cart-link">
                         Корзина
                         <?php
                         // Получаем количество товаров в корзине
@@ -62,7 +68,7 @@ require_once __DIR__ . '/connect.php';
                             $stmt->execute([$_SESSION['user_id']]);
                             $cart_total = $stmt->fetch(PDO::FETCH_ASSOC);
                             $cart_count = (int)$cart_total['total'];
-                            
+
                             if ($cart_count > 0) {
                                 echo '<span class="cart-badge" id="cartBadge">' . $cart_count . '</span>';
                             }
@@ -70,7 +76,7 @@ require_once __DIR__ . '/connect.php';
                         ?>
                     </a>
                 </li>
-                
+
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <!-- Меню для авторизованного пользователя -->
                     <li class="navbar__item navbar__item--dropdown">
@@ -81,20 +87,36 @@ require_once __DIR__ . '/connect.php';
                             </svg>
                         </a>
                         <ul class="dropdown__menu">
-                            <li><a href="profile.php" class="dropdown__link">👤 Профиль</a></li>
-                            <li><a href="orders.php" class="dropdown__link">🛍️ Мои заказы</a></li>
+                            <li><a href="<?= $base_path ?>profile.php" class="dropdown__link">👤 Профиль</a></li>
+                            <li><a href="<?= $base_path ?>orders.php" class="dropdown__link">🛍️ Мои заказы</a></li>
+                            <li class="dropdown__divider"></li>
+                            <li><a href="#" class="dropdown__link" id="theme-toggle">
+                                <span class="theme-icon">🌙</span> <span id="theme-text">Темная тема</span>
+                            </a></li>
                             <?php if ($_SESSION['is_admin']): ?>
                                 <li class="dropdown__divider"></li>
-                                <li><a href="admin/index.php" class="dropdown__link" style="color: #dc3545;">🛡️ Админ-панель</a></li>
+                                <li><a href="<?= $base_path ?>admin/index.php" class="dropdown__link" style="color: #dc3545;">🛡️ Админ-панель</a></li>
                             <?php endif; ?>
                             <li class="dropdown__divider"></li>
-                            <li><a href="auth/logout.php" class="dropdown__link">🚪 Выход</a></li>
+                            <li><a href="<?= $base_path ?>auth/logout.php" class="dropdown__link">🚪 Выход</a></li>
                         </ul>
                     </li>
                 <?php else: ?>
-                    <!-- Кнопка входа для неавторизованных -->
-                    <li class="navbar__item">
-                        <a href="login.php" class="navbar__link">Вход</a>
+                    <!-- Меню для неавторизованных -->
+                    <li class="navbar__item navbar__item--dropdown">
+                        <a href="#" class="navbar__link">
+                            Меню
+                            <svg class="dropdown__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown__menu">
+                            <li><a href="<?= $base_path ?>login.php" class="dropdown__link">🔐 Вход</a></li>
+                            <li class="dropdown__divider"></li>
+                            <li><a href="#" class="dropdown__link" id="theme-toggle-guest">
+                                <span class="theme-icon-guest">🌙</span> <span id="theme-text-guest">Темная тема</span>
+                            </a></li>
+                        </ul>
                     </li>
                 <?php endif; ?>
             </ul>
@@ -142,4 +164,55 @@ document.querySelectorAll('.navbar__item--dropdown').forEach(item => {
         }
     });
 });
+
+// Темная тема
+const currentTheme = localStorage.getItem('theme') || 'light';
+
+// Применяем тему при загрузке
+if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+
+// Функция обновления иконок и текста
+function updateThemeUI(theme) {
+    const themeIcon = document.querySelector('.theme-icon');
+    const themeIconGuest = document.querySelector('.theme-icon-guest');
+    const themeText = document.getElementById('theme-text');
+    const themeTextGuest = document.getElementById('theme-text-guest');
+
+    const icon = theme === 'dark' ? '☀️' : '🌙';
+    const text = theme === 'dark' ? 'Светлая тема' : 'Темная тема';
+
+    if (themeIcon) themeIcon.textContent = icon;
+    if (themeIconGuest) themeIconGuest.textContent = icon;
+    if (themeText) themeText.textContent = text;
+    if (themeTextGuest) themeTextGuest.textContent = text;
+}
+
+// Обновляем UI при загрузке
+updateThemeUI(currentTheme);
+
+// Обработчик для авторизованных
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeUI(theme);
+    });
+}
+
+// Обработчик для неавторизованных
+const themeToggleGuest = document.getElementById('theme-toggle-guest');
+if (themeToggleGuest) {
+    themeToggleGuest.addEventListener('click', (e) => {
+        e.preventDefault();
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeUI(theme);
+    });
+}
 </script>

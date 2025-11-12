@@ -239,16 +239,101 @@
     .checkout {
         padding: 40px 0;
     }
-    
+
     .checkout__title {
         font-size: 2rem;
     }
-    
+
     .checkout-form {
         padding: 24px;
     }
-    
+
     .form-section h2 {
         font-size: 1.25rem;
     }
+}
+
+/* Темная тема */
+[data-theme="dark"] .checkout {
+    background: var(--bg-primary);
+}
+
+[data-theme="dark"] .checkout__title {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .checkout-form {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .form-section h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-group label {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    border-color: #0dcaf0;
+}
+
+[data-theme="dark"] .payment-method {
+    border-color: var(--border-color);
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .payment-method:hover {
+    border-color: #0dcaf0;
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .payment-label strong {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .payment-label small {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .order-summary {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .order-summary h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .order-item__image {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .order-item__info h4 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .order-item__info p {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .order-summary__divider {
+    background: var(--border-color);
+}
+
+[data-theme="dark"] .order-summary__row {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .order-summary__total {
+    color: var(--text-primary);
 }

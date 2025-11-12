@@ -38,41 +38,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Выберите категорию";
     }
     
-    // Обработка загрузки изображения
+    // Обработка загрузки множественных изображений
+    $uploaded_images = [];
     $preview_image = '';
-    if (isset($_FILES['preview_image']) && $_FILES['preview_image']['error'] === UPLOAD_ERR_OK) {
+
+    if (isset($_FILES['product_images']) && !empty($_FILES['product_images']['name'][0])) {
         $allowed_types = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
-        $file_type = $_FILES['preview_image']['type'];
-        
-        if (!in_array($file_type, $allowed_types)) {
-            $errors[] = "Разрешены только изображения (JPG, PNG, WEBP)";
-        } else {
-            $upload_dir = '../assets/img/products/';
-            
-            // Создаем директорию если не существует
-            if (!is_dir($upload_dir)) {
-                mkdir($upload_dir, 0777, true);
-            }
-            
-            $file_extension = pathinfo($_FILES['preview_image']['name'], PATHINFO_EXTENSION);
-            $file_name = uniqid('product_') . '.' . $file_extension;
-            $file_path = $upload_dir . $file_name;
-            
-            if (move_uploaded_file($_FILES['preview_image']['tmp_name'], $file_path)) {
-                $preview_image = 'assets/img/products/' . $file_name;
-            } else {
-                $errors[] = "Ошибка загрузки изображения";
+
+        // Создаем уникальный ID для товара (будет использован как имя папки)
+        $product_folder = uniqid('product_');
+        $upload_dir = '../uploads/preview/' . $product_folder . '/';
+
+        // Создаем директорию для изображений товара
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0777, true);
+        }
+
+        // Обрабатываем каждое загруженное изображение
+        foreach ($_FILES['product_images']['tmp_name'] as $key => $tmp_name) {
+            if ($_FILES['product_images']['error'][$key] === UPLOAD_ERR_OK) {
+                $file_type = $_FILES['product_images']['type'][$key];
+
+                if (!in_array($file_type, $allowed_types)) {
+                    $errors[] = "Файл " . $_FILES['product_images']['name'][$key] . " не является изображением";
+                    continue;
+                }
+
+                $file_extension = pathinfo($_FILES['product_images']['name'][$key], PATHINFO_EXTENSION);
+                $file_name = uniqid('img_') . '.' . $file_extension;
+                $file_path = $upload_dir . $file_name;
+
+                if (move_uploaded_file($tmp_name, $file_path)) {
+                    $uploaded_images[] = 'uploads/preview/' . $product_folder . '/' . $file_name;
+                } else {
+                    $errors[] = "Ошибка загрузки файла " . $_FILES['product_images']['name'][$key];
+                }
             }
         }
+
+        if (empty($uploaded_images)) {
+            $errors[] = "Не удалось загрузить ни одного изображения";
+        } else {
+            // Первое изображение становится основным
+            $preview_image = $uploaded_images[0];
+        }
     } else {
-        $errors[] = "Загрузите изображение товара";
+        $errors[] = "Загрузите хотя бы одно изображение товара";
+    }
+
+    // Обработка загрузки 3D модели
+    $model_file = null;
+    if (isset($_FILES['model_file']) && $_FILES['model_file']['error'] === UPLOAD_ERR_OK) {
+        $file_extension = strtolower(pathinfo($_FILES['model_file']['name'], PATHINFO_EXTENSION));
+
+        // Проверяем расширение файла (GLB, GLTF, FBX, OBJ)
+        if (!in_array($file_extension, ['glb', 'gltf', 'fbx', 'obj'])) {
+            $errors[] = "Разрешены только 3D модели (GLB, GLTF, FBX, OBJ)";
+        } else {
+            $models_dir = '../uploads/models/';
+
+            // Создаем директорию если не существует
+            if (!is_dir($models_dir)) {
+                mkdir($models_dir, 0777, true);
+            }
+
+            $model_filename = uniqid('model_') . '.' . $file_extension;
+            $model_path = $models_dir . $model_filename;
+
+            if (move_uploaded_file($_FILES['model_file']['tmp_name'], $model_path)) {
+                $model_file = 'uploads/models/' . $model_filename;
+            } else {
+                $errors[] = "Ошибка загрузки 3D модели";
+            }
+        }
     }
     
     // Если нет ошибок - добавляем товар
     if (empty($errors)) {
         try {
+            // Начинаем транзакцию
+            $pdo->beginTransaction();
+
+            // Добавляем товар
             $stmt = $pdo->prepare("
-                INSERT INTO products (name, description, price, category_id, preview_image, model_file) 
+                INSERT INTO products (name, description, price, category_id, preview_image, model_file)
                 VALUES (?, ?, ?, ?, ?, ?)
             ");
             $stmt->execute([
@@ -81,11 +130,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $price,
                 $category_id,
                 $preview_image,
-                'models/placeholder.glb' // Заглушка для модели
+                $model_file
             ]);
-            
+
+            $product_id = $pdo->lastInsertId();
+
+            // Добавляем изображения в галерею
+            if (!empty($uploaded_images)) {
+                $stmt = $pdo->prepare("
+                    INSERT INTO product_images (product_id, image_path, is_primary, sort_order)
+                    VALUES (?, ?, ?, ?)
+                ");
+
+                foreach ($uploaded_images as $index => $image_path) {
+                    $is_primary = ($index === 0) ? 1 : 0; // Первое изображение - основное
+                    $stmt->execute([$product_id, $image_path, $is_primary, $index]);
+                }
+            }
+
+            // Фиксируем транзакцию
+            $pdo->commit();
+
             $success_message = "Товар успешно добавлен!";
         } catch (PDOException $e) {
+            // Откатываем транзакцию при ошибке
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
             $errors[] = "Ошибка базы данных: " . $e->getMessage();
         }
     }
@@ -114,7 +185,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <nav class="admin-nav">
                     <a href="index.php" class="admin-nav__link">📊 Дашборд</a>
                     <a href="add_products.php" class="admin-nav__link active">➕ Добавить товар</a>
-                    <a href="manage_orders.php" class="admin-nav__link">📦 Заказы</a>
+                    <a href="manage_products.php" class="admin-nav__link">📦 Управление товарами</a>
+                    <a href="manage_orders.php" class="admin-nav__link">🛒 Заказы</a>
                     <a href="../catalog.php" class="admin-nav__link">🏠 На сайт</a>
                 </nav>
 
@@ -186,13 +258,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                         <div class="form-group">
-                            <label for="preview_image">Изображение товара *</label>
-                            <input type="file" 
-                                   id="preview_image" 
-                                   name="preview_image" 
+                            <label for="product_images">Изображения товара * (можно выбрать несколько)</label>
+                            <input type="file"
+                                   id="product_images"
+                                   name="product_images[]"
                                    accept="image/*"
-                                   required>
-                            <small>Форматы: JPG, PNG, WEBP. Максимум 5 МБ</small>
+                                   multiple
+                                   required
+                                   onchange="validateImages(this)">
+                            <small>Форматы: JPG, PNG, WEBP. Максимум 5 МБ на файл, 20 МБ всего. Первое изображение будет основным.</small>
+                            <div id="images-info" style="margin-top: 5px; color: #666;"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="model_file">3D Модель (необязательно)</label>
+                            <input type="file"
+                                   id="model_file"
+                                   name="model_file"
+                                   accept=".glb,.gltf,.fbx,.obj"
+                                   onchange="validateModel(this)">
+                            <small>Форматы: GLB, GLTF, FBX, OBJ. Максимум 30 МБ. Рекомендуется GLB для лучшей совместимости</small>
                         </div>
 
                         <div class="form-actions">
@@ -210,5 +295,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 
     <?php include '../includes/footer.php' ?>
+
+    <script>
+        // Валидация размера изображений
+        function validateImages(input) {
+            const maxFileSize = 5 * 1024 * 1024; // 5MB на файл
+            const maxTotalSize = 20 * 1024 * 1024; // 20MB всего
+            const infoDiv = document.getElementById('images-info');
+
+            if (input.files.length === 0) {
+                infoDiv.textContent = '';
+                return;
+            }
+
+            let totalSize = 0;
+            let fileCount = input.files.length;
+            let errors = [];
+
+            for (let i = 0; i < input.files.length; i++) {
+                const file = input.files[i];
+                totalSize += file.size;
+
+                if (file.size > maxFileSize) {
+                    errors.push(`"${file.name}" слишком большой (${formatBytes(file.size)}, макс 5MB)`);
+                }
+            }
+
+            if (totalSize > maxTotalSize) {
+                errors.push(`Общий размер ${formatBytes(totalSize)} превышает лимит в 20MB`);
+            }
+
+            if (errors.length > 0) {
+                infoDiv.innerHTML = '<span style="color: #dc3545;">⚠️ ' + errors.join('<br>⚠️ ') + '</span>';
+                input.value = ''; // Очищаем выбор
+                return false;
+            }
+
+            // Показываем инфо об успешном выборе
+            infoDiv.innerHTML = `<span style="color: #28a745;">✓ Выбрано файлов: ${fileCount}, общий размер: ${formatBytes(totalSize)}</span>`;
+            return true;
+        }
+
+        // Валидация размера 3D модели
+        function validateModel(input) {
+            const maxFileSize = 30 * 1024 * 1024; // 30MB для моделей
+
+            if (input.files.length === 0) return;
+
+            const file = input.files[0];
+
+            if (file.size > maxFileSize) {
+                alert(`Файл "${file.name}" слишком большой (${formatBytes(file.size)}, макс 30MB)`);
+                input.value = '';
+                return false;
+            }
+
+            return true;
+        }
+
+        // Форматирование байтов в читаемый вид
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Предупреждение перед отправкой формы
+        document.querySelector('.admin-form').addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Загрузка... Пожалуйста подождите';
+            submitBtn.style.opacity = '0.6';
+        });
+    </script>
 </body>
 </html>

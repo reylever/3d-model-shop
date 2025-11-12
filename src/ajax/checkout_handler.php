@@ -16,12 +16,11 @@ $user_id = $_SESSION['user_id'];
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $phone = trim($_POST['phone'] ?? '');
-$address = trim($_POST['address'] ?? '');
 $payment = $_POST['payment'] ?? 'card';
 $comment = trim($_POST['comment'] ?? '');
 
 // Валидация
-if (empty($name) || empty($email) || empty($phone) || empty($address)) {
+if (empty($name) || empty($email) || empty($phone)) {
     echo json_encode(['success' => false, 'message' => 'Заполните все обязательные поля']);
     exit;
 }
@@ -59,10 +58,10 @@ try {
     
     // Создаем заказ
     $stmt = $pdo->prepare("
-        INSERT INTO orders (user_id, total_price, status) 
-        VALUES (?, ?, 'pending')
+        INSERT INTO orders (user_id, phone, comment, payment_method, total_price, status)
+        VALUES (?, ?, ?, ?, ?, 'pending')
     ");
-    $stmt->execute([$user_id, $total_price]);
+    $stmt->execute([$user_id, $phone, $comment, $payment, $total_price]);
     $order_id = $pdo->lastInsertId();
     
     // Добавляем товары в заказ

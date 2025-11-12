@@ -1,0 +1,20 @@
+# Безопасность папки uploads
+# Разрешаем только скачивание файлов, запрещаем выполнение скриптов
+
+# Отключаем выполнение PHP
+php_flag engine off
+
+# Разрешаем доступ к медиа файлам
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|glb|gltf|fbx|obj)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Запрещаем PHP и другие скрипты
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|sh|cgi)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Отключаем листинг директорий
+Options -Indexes

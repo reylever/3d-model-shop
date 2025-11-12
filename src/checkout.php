@@ -57,44 +57,36 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="checkout-content">
                     <!-- Форма заказа -->
                     <div class="checkout-form">
-                        <form id="checkoutForm" method="POST" action="ajax/checkout.php">
+                        <form id="checkoutForm" method="POST" action="ajax/checkout_handler.php">
                             <div class="form-section">
                                 <h2>Контактные данные</h2>
+                                <p style="color: #6c757d; margin-bottom: 20px;">
+                                    После оплаты 3D модели будут отправлены на ваш email
+                                </p>
                                 <div class="form-group">
                                     <label for="name">Имя *</label>
-                                    <input type="text" 
-                                           id="name" 
-                                           name="name" 
+                                    <input type="text"
+                                           id="name"
+                                           name="name"
                                            value="<?= htmlspecialchars($user['username']) ?>"
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email *</label>
-                                    <input type="email" 
-                                           id="email" 
-                                           name="email" 
+                                    <label for="email">Email для получения файлов *</label>
+                                    <input type="email"
+                                           id="email"
+                                           name="email"
                                            value="<?= htmlspecialchars($user['email']) ?>"
                                            required>
+                                    <small style="color: #6c757d;">Файлы моделей будут отправлены на этот адрес</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Телефон *</label>
-                                    <input type="tel" 
-                                           id="phone" 
-                                           name="phone" 
+                                    <input type="tel"
+                                           id="phone"
+                                           name="phone"
                                            placeholder="+7 (___) ___-__-__"
                                            required>
-                                </div>
-                            </div>
-
-                            <div class="form-section">
-                                <h2>Адрес доставки</h2>
-                                <div class="form-group">
-                                    <label for="address">Адрес *</label>
-                                    <textarea id="address" 
-                                              name="address" 
-                                              rows="3" 
-                                              placeholder="Улица, дом, квартира"
-                                              required></textarea>
                                 </div>
                             </div>
 
@@ -105,13 +97,21 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                         <input type="radio" name="payment" value="card" checked>
                                         <span class="payment-label">
                                             <strong>Банковская карта</strong>
-                                            <small>Visa, MasterCard, МИР</small>
+                                            <small>Visa, MasterCard, МИР - мгновенный доступ</small>
                                         </span>
                                     </label>
                                     <label class="payment-method">
-                                        <input type="radio" name="payment" value="cash">
+                                        <input type="radio" name="payment" value="crypto">
                                         <span class="payment-label">
-                                            <strong>Наличными при получении</strong>
+                                            <strong>Криптовалюта</strong>
+                                            <small>Bitcoin, Ethereum</small>
+                                        </span>
+                                    </label>
+                                    <label class="payment-method">
+                                        <input type="radio" name="payment" value="sbp">
+                                        <span class="payment-label">
+                                            <strong>СБП (Система Быстрых Платежей)</strong>
+                                            <small>Оплата через мобильный банк</small>
                                         </span>
                                     </label>
                                 </div>
@@ -157,12 +157,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="order-summary__divider"></div>
 
                         <div class="order-summary__row">
-                            <span>Товары</span>
+                            <span>3D Модели (<?= count($cart_items) ?> шт.)</span>
                             <span><?= number_format($total, 0, ',', ' ') ?> ₽</span>
                         </div>
-                        <div class="order-summary__row">
-                            <span>Доставка</span>
-                            <span>Бесплатно</span>
+                        <div class="order-summary__row" style="color: #28a745;">
+                            <span>💾 Цифровая доставка</span>
+                            <span>Мгновенно</span>
                         </div>
 
                         <div class="order-summary__divider"></div>

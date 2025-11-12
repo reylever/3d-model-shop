@@ -1,8 +1,66 @@
 /* Админ-панель */
 .admin-panel {
     padding: 60px 0;
-    background: #f5f7fa;
+    background: var(--bg-secondary, #f5f7fa);
     min-height: 100vh;
+    transition: background-color 0.3s;
+}
+
+[data-theme="dark"] .admin-panel {
+    background: #1a1a1a;
+}
+
+[data-theme="dark"] .admin-header h1,
+[data-theme="dark"] .admin-section h2,
+[data-theme="dark"] .products-table td,
+[data-theme="dark"] .stat-card__value {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .admin-nav,
+[data-theme="dark"] .admin-section,
+[data-theme="dark"] .admin-form-container,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .modal-content {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .admin-nav__link {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .admin-nav__link.active {
+    background: #0dcaf0;
+    color: #fff;
+}
+
+[data-theme="dark"] .products-table th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .products-table tbody tr:hover {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .products-table th,
+[data-theme="dark"] .products-table td,
+[data-theme="dark"] .orders-table th,
+[data-theme="dark"] .orders-table td {
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .admin-form input,
+[data-theme="dark"] .admin-form textarea,
+[data-theme="dark"] .admin-form select {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .product-thumbnail {
+    background: var(--bg-secondary);
 }
 
 .admin-header {
@@ -474,4 +532,93 @@
     .btn-small {
         width: 100%;
     }
+}
+
+/* Таблица товаров */
+.products-table {
+    overflow-x: auto;
+}
+
+.products-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td {
+    padding: 16px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.products-table th {
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    background: #f8f9fa;
+}
+
+.products-table td {
+    color: #212529;
+}
+
+.products-table tbody tr {
+    transition: background 0.3s ease;
+}
+
+.products-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.product-thumbnail {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background: #c82333;
+}
+
+[data-theme="dark"] .orders-table th,
+[data-theme="dark"] .orders-table td {
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .orders-table tbody tr:hover {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .orders-table td strong {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-content h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-control {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
 }

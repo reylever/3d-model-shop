@@ -272,16 +272,99 @@
     .breadcrumbs {
         font-size: 0.85rem;
     }
-    
+
     .product-detail__title {
         font-size: 1.5rem;
     }
-    
+
     .product-detail__price {
         font-size: 1.75rem;
     }
-    
+
     .similar-products .products-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Темная тема */
+[data-theme="dark"] .product {
+    background: var(--bg-primary);
+}
+
+[data-theme="dark"] .breadcrumbs {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .breadcrumbs a {
+    color: #0dcaf0;
+}
+
+[data-theme="dark"] .breadcrumbs span:not(:last-child) {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .product-detail {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .product-detail__image {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .product-detail__category {
+    background: rgba(13, 202, 240, 0.2);
+    color: #0dcaf0;
+}
+
+[data-theme="dark"] .product-detail__title {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .product-detail__description h3 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .product-detail__description p {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .product-detail__meta {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .meta-item strong {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .meta-item span {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .btn--secondary {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn--secondary:hover {
+    background: var(--bg-primary);
+    border-color: var(--text-secondary);
+}
+
+[data-theme="dark"] .similar-products h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .similar-products .product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .similar-products .product-card__image {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .similar-products .product-card__title {
+    color: var(--text-primary);
 }

@@ -9,7 +9,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Оформление...';
     
-    fetch('ajax/checkout.php', {
+    fetch('ajax/checkout_handler.php', {
         method: 'POST',
         body: formData
     })

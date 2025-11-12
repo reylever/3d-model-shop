@@ -1,0 +1,6 @@
+# Увеличение лимитов для загрузки файлов
+php_value upload_max_filesize 50M
+php_value post_max_size 50M
+php_value max_execution_time 300
+php_value max_input_time 300
+php_value memory_limit 256M
