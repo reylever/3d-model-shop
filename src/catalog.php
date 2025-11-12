@@ -5,28 +5,35 @@ require_once 'includes/connect.php';
 // Получаем выбранную категорию (если есть)
 $category_id = isset($_GET['category']) ? (int)$_GET['category'] : null;
 
+// Получаем поисковый запрос (если есть)
+$search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
+
 // Получаем список всех категорий для фильтра
 $stmt = $pdo->query("SELECT * FROM categories ORDER BY name");
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Формируем SQL-запрос для товаров
+$sql = "SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE 1=1";
+$params = [];
+
+// Фильтр по категории
 if ($category_id) {
-    $stmt = $pdo->prepare("
-        SELECT p.*, c.name as category_name 
-        FROM products p 
-        LEFT JOIN categories c ON p.category_id = c.id 
-        WHERE p.category_id = ? 
-        ORDER BY p.created_at DESC
-    ");
-    $stmt->execute([$category_id]);
-} else {
-    $stmt = $pdo->query("
-        SELECT p.*, c.name as category_name 
-        FROM products p 
-        LEFT JOIN categories c ON p.category_id = c.id 
-        ORDER BY p.created_at DESC
-    ");
+    $sql .= " AND p.category_id = ?";
+    $params[] = $category_id;
 }
+
+// Фильтр по поиску
+if (!empty($search_query)) {
+    $sql .= " AND (p.name LIKE ? OR p.description LIKE ?)";
+    $search_param = '%' . $search_query . '%';
+    $params[] = $search_param;
+    $params[] = $search_param;
+}
+
+$sql .= " ORDER BY p.created_at DESC";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Получаем ID товаров в корзине пользователя
@@ -52,11 +59,17 @@ if (isset($_SESSION['user_id'])) {
     <main>
         <section class="catalog">
             <div class="container">
-                <h1 class="catalog__title">Каталог 3D-моделей</h1>
+                <h1 class="catalog__title">
+                    <?php if (!empty($search_query)): ?>
+                        Результаты поиска: "<?= htmlspecialchars($search_query) ?>"
+                    <?php else: ?>
+                        Каталог 3D-моделей
+                    <?php endif; ?>
+                </h1>
 
                 <!-- Фильтр по категориям -->
                 <div class="catalog__filters">
-                    <a href="catalog.php" class="filter-btn <?= !$category_id ? 'active' : '' ?>">
+                    <a href="catalog.php" class="filter-btn <?= !$category_id && empty($search_query) ? 'active' : '' ?>">
                         Все категории
                     </a>
                     <?php foreach ($categories as $category): ?>
@@ -71,7 +84,12 @@ if (isset($_SESSION['user_id'])) {
                 <div class="products-grid">
                     <?php if (empty($products)): ?>
                         <div class="no-products">
-                            <p>В этой категории пока нет товаров</p>
+                            <?php if (!empty($search_query)): ?>
+                                <p>По запросу "<?= htmlspecialchars($search_query) ?>" ничего не найдено</p>
+                                <a href="catalog.php" class="btn btn--primary">Показать все товары</a>
+                            <?php else: ?>
+                                <p>В этой категории пока нет товаров</p>
+                            <?php endif; ?>
                         </div>
                     <?php else: ?>
                         <?php foreach ($products as $product): ?>

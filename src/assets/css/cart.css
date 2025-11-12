@@ -157,25 +157,40 @@
 /* Убираем стрелочки в числовых input - Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
-    display: none;
-}
-
-/* Убираем стрелочки - Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-}
-
-/* Дополнительная специфичность для .quantity-input */
-.cart-item__quantity .quantity-input::-webkit-outer-spin-button,
-.cart-item__quantity .quantity-input::-webkit-inner-spin-button {
     -webkit-appearance: none !important;
     appearance: none !important;
     margin: 0 !important;
     display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Убираем стрелочки - Firefox */
+input[type="number"] {
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+}
+
+/* Дополнительная специфичность для .quantity-input */
+.cart-item__quantity .quantity-input,
+.cart-item__quantity input[type="number"] {
+    -webkit-appearance: none !important;
+    -moz-appearance: textfield !important;
+    appearance: none !important;
+}
+
+.cart-item__quantity .quantity-input::-webkit-outer-spin-button,
+.cart-item__quantity .quantity-input::-webkit-inner-spin-button,
+.cart-item__quantity input[type="number"]::-webkit-outer-spin-button,
+.cart-item__quantity input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    margin: 0 !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 /* Итого за товар */
