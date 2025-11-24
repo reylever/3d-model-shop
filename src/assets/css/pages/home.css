@@ -128,7 +128,8 @@
 
 /* Темная тема */
 [data-theme="dark"] .hero__title,
-[data-theme="dark"] .hero__text {
+[data-theme="dark"] .hero__text,
+[data-theme="dark"] .showcase__title {
   color: var(--text-primary);
 }
 
@@ -144,10 +145,6 @@
 
 [data-theme="dark"] .hero__search-input::placeholder {
   color: var(--text-secondary);
-}
-
-[data-theme="dark"] .showcase__title {
-  color: var(--text-primary);
 }
 
 /* Адаптивность */

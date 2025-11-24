@@ -69,16 +69,20 @@
 }
 
 /* Кнопки добавления в корзину */
-.btn-add-cart {
+.btn-add-cart,
+.btn-in-cart {
   padding: 10px var(--spacing-xl);
-  background: var(--color-primary);
   color: var(--color-white);
   border: none;
   border-radius: var(--border-radius-md);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
-  cursor: pointer;
   transition: all var(--transition-base);
+}
+
+.btn-add-cart {
+  background: var(--color-primary);
+  cursor: pointer;
 }
 
 .btn-add-cart:hover {
@@ -92,13 +96,7 @@
 }
 
 .btn-in-cart {
-  padding: 10px var(--spacing-xl);
   background: var(--color-success);
-  color: var(--color-white);
-  border: none;
-  border-radius: var(--border-radius-md);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
   cursor: not-allowed;
   opacity: 0.8;
 }
@@ -120,11 +118,6 @@
   background: var(--bg-secondary);
   border-color: var(--border-color);
   color: var(--text-primary);
-}
-
-[data-theme="dark"] .filter-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
 }
 
 [data-theme="dark"] .filter-btn.active {

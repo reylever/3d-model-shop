@@ -1,59 +1,47 @@
 <footer class="footer">
     <div class="container">
         <div class="footer__content">
-            
-            <!-- Колонка 1 -->
+
+            <!-- О компании -->
             <div class="footer__column">
+                <h6 class="footer__title">О компании</h6>
                 <ul class="footer__list">
-                    <li><a href="#" class="footer__link">Блог</a></li>
-                    <li><a href="#" class="footer__link">Пресса</a></li>
-                    <li><a href="#" class="footer__link">Вакансии</a></li>
-                    <li><a href="#" class="footer__link">Центр поддержки</a></li>
-                    <li><a href="#" class="footer__link">Связаться с нами</a></li>
+                    <li><a href="/about.php" class="footer__link">О нас</a></li>
+                    <li><a href="/contacts.php" class="footer__link">Контакты</a></li>
+                    <li><a href="/how-it-works.php" class="footer__link">Как это работает</a></li>
+                    <li><a href="/partnership.php" class="footer__link">Сотрудничество</a></li>
                 </ul>
             </div>
 
-            <!-- Колонка 2 -->
+            <!-- Информация -->
             <div class="footer__column">
+                <h6 class="footer__title">Информация</h6>
                 <ul class="footer__list">
-                    <li><a href="#" class="footer__link">Фриланс 3D-проекты</a></li>
-                    <li><a href="#" class="footer__link">Бесплатные 3D-модели</a></li>
-                    <li><a href="#" class="footer__link">3D-датасет</a></li>
-                    <li><a href="#" class="footer__link">Скидки</a></li>
+                    <li><a href="/faq.php" class="footer__link">FAQ / Помощь</a></li>
+                    <li><a href="/payment.php" class="footer__link">Оплата</a></li>
+                    <li><a href="/licensing.php" class="footer__link">Лицензирование</a></li>
+                    <li><a href="/formats.php" class="footer__link">Форматы файлов</a></li>
                 </ul>
             </div>
 
-            <!-- Колонка 3 -->
+            <!-- Каталог -->
             <div class="footer__column">
+                <h6 class="footer__title">Каталог</h6>
                 <ul class="footer__list">
-                    <li><a href="#" class="footer__link">3D-дизайнеры</a></li>
-                    <li><a href="#" class="footer__link">Форум</a></li>
-                    <li><a href="#" class="footer__link">Фриланс с нами</a></li>
+                    <li><a href="/catalog.php" class="footer__link">Все модели</a></li>
+                    <li><a href="/catalog.php?category=Interior" class="footer__link">Интерьер</a></li>
+                    <li><a href="/catalog.php?category=Characters" class="footer__link">Персонажи</a></li>
+                    <li><a href="/catalog.php?category=Weapons" class="footer__link">Оружие</a></li>
                 </ul>
             </div>
 
-            <!-- Колонка 4 -->
+            <!-- Правовая информация -->
             <div class="footer__column">
+                <h6 class="footer__title">Правовая информация</h6>
                 <ul class="footer__list">
-                    <li><a href="#" class="footer__link">3D-Вьювер</a></li>
-                    <li><a href="#" class="footer__link">Визуализация 3D-продуктов</a></li>
-                    <li><a href="#" class="footer__link">Управление 3D-ассетами</a></li>
-                    <li><a href="#" class="footer__link">Индивидуальное 3D-моделирование</a></li>
-                    <li><a href="#" class="footer__link">Виртуальная фотография</a></li>
-                </ul>
-            </div>
-
-            <!-- Колонка 5 -->
-            <div class="footer__column footer__column--wide">
-                <h6 class="footer__title">Создание изображений с Flux Dev</h6>
-                <ul class="footer__list">
-                    <li><a href="#" class="footer__link">AI: Текст в изображение</a></li>
-                    <li><a href="#" class="footer__link">AI-Фоторедактор</a></li>
-                    <li><a href="#" class="footer__link">AI-Рендеринг 3D</a></li>
-                    <li><a href="#" class="footer__link">AI-Генератор 3D-моделей</a></li>
-                    <li><a href="#" class="footer__link">AI-Фильтры для изображений</a></li>
-                    <li><a href="#" class="footer__link">AI-Улучшение изображений</a></li>
-                    <li><a href="#" class="footer__link">AI-Редактирование изображений</a></li>
+                    <li><a href="/terms.php" class="footer__link">Условия использования</a></li>
+                    <li><a href="/privacy.php" class="footer__link">Политика конфиденциальности</a></li>
+                    <li><a href="/license-agreement.php" class="footer__link">Лицензионное соглашение</a></li>
                 </ul>
             </div>
 
@@ -64,11 +52,11 @@
         <!-- Нижняя строка -->
         <div class="footer__bottom">
             <div class="footer__copyright">
-                © Яшин стаффчик 2011–2025
+                © 3D Model Shop 2024–2025
                 <span class="footer__separator">|</span>
-                <a href="#" class="footer__link">Правила и условия</a>
+                <a href="/terms.php" class="footer__link">Условия использования</a>
                 <span class="footer__separator">|</span>
-                <a href="#" class="footer__link">Политика конфиденциальности</a>
+                <a href="/privacy.php" class="footer__link">Политика конфиденциальности</a>
             </div>
 
             <div class="footer__social">

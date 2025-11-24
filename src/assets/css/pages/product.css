@@ -151,7 +151,8 @@
   border: 1px solid var(--border-color);
 }
 
-[data-theme="dark"] .product-detail__image {
+[data-theme="dark"] .product-detail__image,
+[data-theme="dark"] .product-detail__meta {
   background: var(--bg-secondary);
 }
 
@@ -160,32 +161,16 @@
   color: var(--color-primary);
 }
 
-[data-theme="dark"] .product-detail__title {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .product-detail__description h3 {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .product-detail__description p {
-  color: var(--text-secondary);
-}
-
-[data-theme="dark"] .product-detail__meta {
-  background: var(--bg-secondary);
-}
-
-[data-theme="dark"] .meta-item strong {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .meta-item span {
-  color: var(--text-secondary);
-}
-
+[data-theme="dark"] .product-detail__title,
+[data-theme="dark"] .product-detail__description h3,
+[data-theme="dark"] .meta-item strong,
 [data-theme="dark"] .similar-products h2 {
   color: var(--text-primary);
+}
+
+[data-theme="dark"] .product-detail__description p,
+[data-theme="dark"] .meta-item span {
+  color: var(--text-secondary);
 }
 
 /* Адаптивность */

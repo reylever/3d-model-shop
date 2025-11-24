@@ -240,52 +240,38 @@
   background: var(--bg-primary);
 }
 
-[data-theme="dark"] .cart__title {
+[data-theme="dark"] .cart__title,
+[data-theme="dark"] .cart-empty h2,
+[data-theme="dark"] .cart-item__title a,
+[data-theme="dark"] .cart-summary h2,
+[data-theme="dark"] .summary-row,
+[data-theme="dark"] .summary-total {
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .cart-empty {
+[data-theme="dark"] .cart-empty,
+[data-theme="dark"] .cart-item,
+[data-theme="dark"] .cart-summary {
   background: var(--card-bg);
+  border: 1px solid var(--border-color);
 }
 
 [data-theme="dark"] .cart-empty svg {
   color: var(--text-secondary);
 }
 
-[data-theme="dark"] .cart-empty h2 {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .cart-empty p {
-  color: var(--text-secondary);
-}
-
-[data-theme="dark"] .cart-item {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-}
-
-[data-theme="dark"] .cart-item__image {
-  background: var(--bg-secondary);
-}
-
-[data-theme="dark"] .cart-item__title a {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .cart-item__title a:hover {
-  color: var(--color-primary);
-}
-
+[data-theme="dark"] .cart-empty p,
 [data-theme="dark"] .cart-item__price {
   color: var(--text-secondary);
 }
 
+[data-theme="dark"] .cart-item__image,
 [data-theme="dark"] .cart-item__quantity {
   background: var(--bg-secondary);
 }
 
-[data-theme="dark"] .quantity-btn {
+[data-theme="dark"] .quantity-btn,
+[data-theme="dark"] .cart-item__remove {
   background: var(--card-bg);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
@@ -296,35 +282,13 @@
   color: var(--color-white);
 }
 
-[data-theme="dark"] .cart-item__remove {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-}
-
 [data-theme="dark"] .cart-item__remove:hover {
   background: var(--color-danger);
   color: var(--color-white);
 }
 
-[data-theme="dark"] .cart-summary {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-}
-
-[data-theme="dark"] .cart-summary h2 {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .summary-row {
-  color: var(--text-primary);
-}
-
 [data-theme="dark"] .summary-divider {
   background: var(--border-color);
-}
-
-[data-theme="dark"] .summary-total {
-  color: var(--text-primary);
 }
 
 /* Адаптивность */

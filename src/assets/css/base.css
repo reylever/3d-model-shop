@@ -76,16 +76,11 @@ select {
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  appearance: none;
   margin: 0;
-  display: none;
-  opacity: 0;
-  pointer-events: none;
 }
 
 input[type="number"] {
   -moz-appearance: textfield;
-  appearance: textfield;
 }
 
 /* Заголовки */

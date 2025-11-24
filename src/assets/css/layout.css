@@ -106,6 +106,8 @@
 /* Dropdown */
 .dropdown__icon {
   transition: transform var(--transition-base);
+  cursor: pointer;
+  padding: 4px;
 }
 
 .navbar__item--dropdown:hover .dropdown__icon {
@@ -400,6 +402,13 @@
   .cart-badge {
     position: static;
     margin-left: var(--spacing-sm);
+  }
+
+  /* Увеличиваем зону клика для стрелки dropdown на мобильных */
+  .dropdown__icon {
+    padding: 8px;
+    margin: -8px;
+    margin-left: 4px;
   }
 }
 

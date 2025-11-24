@@ -62,27 +62,6 @@
   border-color: var(--color-primary);
 }
 
-/* Чекбокс для регистрации */
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-2xl);
-}
-
-.checkbox-group input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-}
-
-.checkbox-group label {
-  margin-bottom: 0;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-normal);
-  cursor: pointer;
-}
-
 /* Ссылки на другие страницы */
 .login-register,
 .register-login {

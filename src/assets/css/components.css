@@ -336,15 +336,9 @@
 }
 
 /* Бейджи */
-.badge {
-  display: inline-block;
-  padding: 4px var(--spacing-md);
-  border-radius: var(--border-radius-md);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-}
-
+.badge,
 .status-badge {
+  display: inline-block;
   padding: 4px var(--spacing-md);
   border-radius: var(--border-radius-md);
   font-size: var(--font-size-sm);
@@ -441,7 +435,8 @@
 }
 
 /* Темная тема для компонентов */
-[data-theme="dark"] .product-card {
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .modal-content {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
 }
@@ -450,7 +445,9 @@
   background: var(--bg-secondary);
 }
 
-[data-theme="dark"] .product-card__title {
+[data-theme="dark"] .product-card__title,
+[data-theme="dark"] .product-card__description,
+[data-theme="dark"] .modal-content h2 {
   color: var(--text-primary);
 }
 
@@ -465,14 +462,6 @@
 
 [data-theme="dark"] .asset-card {
   border: 1px solid var(--border-color);
-}
-
-[data-theme="dark"] .modal-content {
-  background: var(--card-bg);
-}
-
-[data-theme="dark"] .modal-content h2 {
-  color: var(--text-primary);
 }
 
 [data-theme="dark"] .alert-success {

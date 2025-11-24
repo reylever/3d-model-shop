@@ -194,17 +194,20 @@
   background: var(--bg-primary);
 }
 
-[data-theme="dark"] .checkout__title {
+[data-theme="dark"] .checkout__title,
+[data-theme="dark"] .form-section h2,
+[data-theme="dark"] .payment-label strong,
+[data-theme="dark"] .order-summary h2,
+[data-theme="dark"] .order-item__info h4,
+[data-theme="dark"] .order-summary__row,
+[data-theme="dark"] .order-summary__total {
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .checkout-form {
+[data-theme="dark"] .checkout-form,
+[data-theme="dark"] .order-summary {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-}
-
-[data-theme="dark"] .form-section h2 {
-  color: var(--text-primary);
 }
 
 [data-theme="dark"] .payment-method {
@@ -217,45 +220,17 @@
   background: var(--card-bg);
 }
 
-[data-theme="dark"] .payment-label strong {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .payment-label small {
+[data-theme="dark"] .payment-label small,
+[data-theme="dark"] .order-item__info p {
   color: var(--text-secondary);
-}
-
-[data-theme="dark"] .order-summary {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-}
-
-[data-theme="dark"] .order-summary h2 {
-  color: var(--text-primary);
 }
 
 [data-theme="dark"] .order-item__image {
   background: var(--bg-secondary);
 }
 
-[data-theme="dark"] .order-item__info h4 {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .order-item__info p {
-  color: var(--text-secondary);
-}
-
 [data-theme="dark"] .order-summary__divider {
   background: var(--border-color);
-}
-
-[data-theme="dark"] .order-summary__row {
-  color: var(--text-primary);
-}
-
-[data-theme="dark"] .order-summary__total {
-  color: var(--text-primary);
 }
 
 /* Адаптивность */

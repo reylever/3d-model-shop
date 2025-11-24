@@ -157,12 +157,34 @@ document.addEventListener('click', (e) => {
 
 // Dropdown меню
 document.querySelectorAll('.navbar__item--dropdown').forEach(item => {
-    item.addEventListener('click', (e) => {
-        if (window.innerWidth <= 992) {
-            e.preventDefault();
-            item.classList.toggle('active');
-        }
-    });
+    const link = item.querySelector('.navbar__link');
+    const dropdownIcon = item.querySelector('.dropdown__icon');
+
+    // Клик на иконку стрелки - открыть/закрыть dropdown
+    if (dropdownIcon) {
+        dropdownIcon.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                e.stopPropagation();
+                item.classList.toggle('active');
+            }
+        });
+    }
+
+    // Клик на ссылку - если это # то открыть dropdown, иначе перейти
+    if (link) {
+        link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                const href = link.getAttribute('href');
+                // Если ссылка пустая или #, открываем dropdown
+                if (!href || href === '#') {
+                    e.preventDefault();
+                    item.classList.toggle('active');
+                }
+                // Иначе позволяем перейти по ссылке
+            }
+        });
+    }
 });
 
 // Темная тема

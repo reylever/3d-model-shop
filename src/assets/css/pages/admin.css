@@ -395,18 +395,16 @@
 }
 
 [data-theme="dark"] .products-table th,
-[data-theme="dark"] .orders-table th {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-}
-
+[data-theme="dark"] .orders-table th,
 [data-theme="dark"] .products-table tbody tr:hover,
-[data-theme="dark"] .orders-table tbody tr:hover {
-  background: var(--bg-secondary);
-}
-
+[data-theme="dark"] .orders-table tbody tr:hover,
 [data-theme="dark"] .product-thumbnail {
   background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .products-table th,
+[data-theme="dark"] .orders-table th {
+  color: var(--text-primary);
 }
 
 /* Адаптивность */
