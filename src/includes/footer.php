@@ -6,10 +6,10 @@
             <div class="footer__column">
                 <h6 class="footer__title">О компании</h6>
                 <ul class="footer__list">
-                    <li><a href="/about.php" class="footer__link">О нас</a></li>
-                    <li><a href="/contacts.php" class="footer__link">Контакты</a></li>
-                    <li><a href="/how-it-works.php" class="footer__link">Как это работает</a></li>
-                    <li><a href="/partnership.php" class="footer__link">Сотрудничество</a></li>
+                    <li><a href="<?= $base_path ?>about.php" class="footer__link">О нас</a></li>
+                    <li><a href="<?= $base_path ?>contacts.php" class="footer__link">Контакты</a></li>
+                    <li><a href="<?= $base_path ?>how-it-works.php" class="footer__link">Как это работает</a></li>
+                    <li><a href="<?= $base_path ?>partnership.php" class="footer__link">Сотрудничество</a></li>
                 </ul>
             </div>
 
@@ -17,10 +17,10 @@
             <div class="footer__column">
                 <h6 class="footer__title">Информация</h6>
                 <ul class="footer__list">
-                    <li><a href="/faq.php" class="footer__link">FAQ / Помощь</a></li>
-                    <li><a href="/payment.php" class="footer__link">Оплата</a></li>
-                    <li><a href="/licensing.php" class="footer__link">Лицензирование</a></li>
-                    <li><a href="/formats.php" class="footer__link">Форматы файлов</a></li>
+                    <li><a href="<?= $base_path ?>faq.php" class="footer__link">FAQ / Помощь</a></li>
+                    <li><a href="<?= $base_path ?>payment.php" class="footer__link">Оплата</a></li>
+                    <li><a href="<?= $base_path ?>licensing.php" class="footer__link">Лицензирование</a></li>
+                    <li><a href="<?= $base_path ?>formats.php" class="footer__link">Форматы файлов</a></li>
                 </ul>
             </div>
 
@@ -28,10 +28,10 @@
             <div class="footer__column">
                 <h6 class="footer__title">Каталог</h6>
                 <ul class="footer__list">
-                    <li><a href="/catalog.php" class="footer__link">Все модели</a></li>
-                    <li><a href="/catalog.php?category=Interior" class="footer__link">Интерьер</a></li>
-                    <li><a href="/catalog.php?category=Characters" class="footer__link">Персонажи</a></li>
-                    <li><a href="/catalog.php?category=Weapons" class="footer__link">Оружие</a></li>
+                    <li><a href="<?= $base_path ?>catalog.php" class="footer__link">Все модели</a></li>
+                    <li><a href="<?= $base_path ?>catalog.php?category=Interior" class="footer__link">Интерьер</a></li>
+                    <li><a href="<?= $base_path ?>catalog.php?category=Characters" class="footer__link">Персонажи</a></li>
+                    <li><a href="<?= $base_path ?>catalog.php?category=Weapons" class="footer__link">Оружие</a></li>
                 </ul>
             </div>
 
@@ -39,9 +39,9 @@
             <div class="footer__column">
                 <h6 class="footer__title">Правовая информация</h6>
                 <ul class="footer__list">
-                    <li><a href="/terms.php" class="footer__link">Условия использования</a></li>
-                    <li><a href="/privacy.php" class="footer__link">Политика конфиденциальности</a></li>
-                    <li><a href="/license-agreement.php" class="footer__link">Лицензионное соглашение</a></li>
+                    <li><a href="<?= $base_path ?>terms.php" class="footer__link">Условия использования</a></li>
+                    <li><a href="<?= $base_path ?>privacy.php" class="footer__link">Политика конфиденциальности</a></li>
+                    <li><a href="<?= $base_path ?>license-agreement.php" class="footer__link">Лицензионное соглашение</a></li>
                 </ul>
             </div>
 
@@ -54,9 +54,9 @@
             <div class="footer__copyright">
                 © 3D Model Shop 2024–2025
                 <span class="footer__separator">|</span>
-                <a href="/terms.php" class="footer__link">Условия использования</a>
+                <a href="<?= $base_path ?>terms.php" class="footer__link">Условия использования</a>
                 <span class="footer__separator">|</span>
-                <a href="/privacy.php" class="footer__link">Политика конфиденциальности</a>
+                <a href="<?= $base_path ?>privacy.php" class="footer__link">Политика конфиденциальности</a>
             </div>
 
             <div class="footer__social">
