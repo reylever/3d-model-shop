@@ -64,8 +64,7 @@ $status_colors = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои заказы - Яшин стаффчик</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <style>
         .orders-container {
             max-width: 1200px;

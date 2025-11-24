@@ -1,0 +1,238 @@
+/* ============================================
+   ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ И ЗАКАЗЫ
+   ============================================ */
+
+.profile,
+.orders {
+  padding: var(--spacing-5xl) 0;
+  background: var(--bg-tertiary);
+  min-height: 100vh;
+}
+
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.profile__title,
+.orders__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4xl);
+  color: var(--text-primary);
+}
+
+/* Карточка профиля */
+.profile-card {
+  background: var(--card-bg);
+  padding: var(--spacing-4xl);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.profile-section {
+  background: var(--card-bg);
+  padding: var(--spacing-3xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.profile-section h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2xl);
+  color: var(--text-primary);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.profile-info p {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+}
+
+.profile-info strong {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Статистика пользователя */
+.stat-box {
+  background: var(--card-bg);
+  padding: var(--spacing-2xl);
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-box .stat-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.stat-box .stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* Заказы */
+.order-item {
+  background: var(--card-bg);
+  padding: var(--spacing-2xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-xl);
+  border: 1px solid var(--border-color);
+}
+
+.order-item strong {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.order-card {
+  background: var(--card-bg);
+  padding: var(--spacing-2xl);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: var(--spacing-xl);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.order-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.order-card__number {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.order-card__date {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.order-card__items {
+  margin-bottom: var(--spacing-lg);
+}
+
+.order-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.order-card__total {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+/* Темная тема */
+[data-theme="dark"] .profile,
+[data-theme="dark"] .orders {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .profile__title,
+[data-theme="dark"] .orders__title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .profile-card,
+[data-theme="dark"] .profile-section,
+[data-theme="dark"] .order-item,
+[data-theme="dark"] .order-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .profile-section h2 {
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .profile-info p,
+[data-theme="dark"] .profile-info strong,
+[data-theme="dark"] .order-item strong {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .stat-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .stat-box .stat-label {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .order-card__header,
+[data-theme="dark"] .order-card__footer {
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .order-card__number {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .order-card__date {
+  color: var(--text-secondary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .profile,
+  .orders {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .profile__title,
+  .orders__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .profile-card,
+  .profile-section {
+    padding: var(--spacing-2xl);
+  }
+
+  .order-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .order-card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 576px) {
+  .profile__title,
+  .orders__title {
+    font-size: var(--font-size-2xl);
+  }
+}

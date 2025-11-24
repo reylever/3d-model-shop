@@ -1,7 +1,10 @@
-/* Стили для страницы 404 */
+/* ============================================
+   СТРАНИЦА 404
+   ============================================ */
+
 .error-404 {
   text-align: center;
-  padding: 60px 20px;
+  padding: var(--spacing-5xl) var(--spacing-xl);
   min-height: 60vh;
   display: flex;
   flex-direction: column;
@@ -11,7 +14,7 @@
 
 .error-404 h1 {
   font-size: 8rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   margin-bottom: 0.3em;
   color: #ff5050;
   text-shadow: 0 4px 12px rgba(255, 80, 80, 0.3);
@@ -19,21 +22,21 @@
 }
 
 .error-404 p {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   margin-bottom: 2em;
-  color: #666;
-  font-weight: 400;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-normal);
 }
 
 .error-404 a {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 1.1rem;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-lg);
 }
 
 .error-404 a i {
-  font-size: 1.2rem;
+  font-size: var(--font-size-lg);
 }
 
 @keyframes pulse {
@@ -45,14 +48,19 @@
   }
 }
 
+/* Темная тема */
+[data-theme="dark"] .error-404 p {
+  color: var(--text-secondary);
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
   .error-404 h1 {
     font-size: 5rem;
   }
-  
+
   .error-404 p {
-    font-size: 1.2rem;
+    font-size: var(--font-size-lg);
   }
 }
 
@@ -60,8 +68,8 @@
   .error-404 h1 {
     font-size: 4rem;
   }
-  
+
   .error-404 p {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 }

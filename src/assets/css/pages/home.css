@@ -1,0 +1,224 @@
+/* ============================================
+   ГЛАВНАЯ СТРАНИЦА
+   Hero и Showcase секции
+   ============================================ */
+
+/* Hero секция */
+.hero {
+  color: var(--text-primary);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero__content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero__title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  line-height: var(--line-height-tight);
+}
+
+.hero__text {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-4xl);
+  opacity: 0.95;
+}
+
+.hero__search {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero__search-input {
+  flex: 1;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border: none;
+  font-size: var(--font-size-base);
+  color: var(--color-gray-800);
+  outline: none;
+}
+
+.hero__search-input::placeholder {
+  color: var(--color-gray-600);
+}
+
+.hero__search-btn {
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__search-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Showcase секция */
+.showcase {
+  padding: 80px 0;
+}
+
+.showcase__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-5xl);
+}
+
+.showcase__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+/* Assets grid */
+.assets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-auto-rows: 280px;
+  gap: var(--spacing-xl);
+}
+
+/* Фоновые изображения категорий */
+.asset-card--interior {
+  background-image: url('../../img/categories/interior_category.avif');
+}
+
+.asset-card--cars {
+  background-image: url('../../img/categories/cars_category.avif');
+}
+
+.asset-card--exterior {
+  background-image: url('../../img/categories/exterior_category.avif');
+}
+
+.asset-card--weapons {
+  background-image: url('../../img/categories/weapons_category.avif');
+}
+
+.asset-card--characters {
+  background-image: url('../../img/categories/characters_category.avif');
+}
+
+.asset-card--props {
+  background-image: url('../../img/categories/props_category.avif');
+}
+
+.asset-card--env {
+  background-image: url('../../img/categories/env_category.avif');
+}
+
+.asset-card--scifi {
+  background-image: url('../../img/categories/sci-fi_category.avif');
+}
+
+/* Темная тема */
+[data-theme="dark"] .hero__title,
+[data-theme="dark"] .hero__text {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .hero__search {
+  background: var(--card-bg);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .hero__search-input {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .hero__search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .showcase__title {
+  color: var(--text-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .hero__title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .showcase__title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .assets-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 220px;
+  }
+
+  .asset-card--wide,
+  .asset-card--tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .asset-card--wide .asset-card__label {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0;
+  }
+
+  .hero__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero__text {
+    font-size: var(--font-size-base);
+  }
+
+  .showcase {
+    padding: 60px 0;
+  }
+
+  .showcase__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-4xl);
+  }
+}
+
+@media (max-width: 576px) {
+  .hero__title {
+    font-size: 1.75rem;
+  }
+
+  .hero__search {
+    flex-direction: column;
+  }
+
+  .hero__search-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .assets-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+  }
+}

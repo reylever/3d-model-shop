@@ -57,8 +57,7 @@ $similar_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($product['name']) ?> - Яшин стаффчик</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <script type="importmap">
     {
         "imports": {
@@ -86,7 +85,7 @@ $similar_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         .viewer-controls {
             position: absolute;
-            bottom: 20px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0,0,0,0.7);

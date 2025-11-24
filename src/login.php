@@ -8,7 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Яшин стаффчик - 3д модели - Вход</title>
     
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
     <?php include 'includes/header.php' ?>
@@ -28,7 +28,7 @@ session_start();
                     <input type="password" id="password" name="password" required placeholder="Введите пароль">
                 </div>
 
-                <button type="submit" class="default_button">Войти</button>
+                <button type="submit" class="btn btn--primary btn--block">Войти</button>
 
                 <p class="login-register">
                     Нет аккаунта? <a href="register.php">Зарегистрироваться</a>

@@ -8,7 +8,7 @@ if (strpos($_SERVER['PHP_SELF'], '/admin/') !== false) {
     $base_path = '../';
 }
 ?>
-<link rel="stylesheet" href="<?= $base_path ?>assets/css/style.css">
+<link rel="stylesheet" href="<?= $base_path ?>assets/css/main.css">
 <header class="header">
     <nav class="navbar">
         <div class="container">

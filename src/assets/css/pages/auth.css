@@ -1,0 +1,135 @@
+/* ============================================
+   АУТЕНТИФИКАЦИЯ
+   Страницы входа и регистрации
+   ============================================ */
+
+/* Общие стили для страниц аутентификации */
+.login-page,
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  background: var(--bg-tertiary);
+}
+
+.login-container,
+.register-container {
+  background: var(--card-bg);
+  padding: var(--spacing-4xl) var(--spacing-5xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 460px;
+  width: 100%;
+}
+
+.login-title,
+.register-title {
+  text-align: center;
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.login-form .form-group,
+.register-form .form-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.login-form label,
+.register-form label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.login-form input,
+.register-form input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-base);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.login-form input:focus,
+.register-form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Чекбокс для регистрации */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  cursor: pointer;
+}
+
+/* Ссылки на другие страницы */
+.login-register,
+.register-login {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+}
+
+.login-register a,
+.register-login a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+}
+
+.login-register a:hover,
+.register-login a:hover {
+  text-decoration: underline;
+}
+
+/* Темная тема */
+[data-theme="dark"] .login-page,
+[data-theme="dark"] .register-page {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .login-container,
+[data-theme="dark"] .register-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .login-title,
+[data-theme="dark"] .register-title {
+  color: var(--text-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 576px) {
+  .login-container,
+  .register-container {
+    padding: var(--spacing-3xl) var(--spacing-3xl);
+    margin: var(--spacing-xl);
+  }
+
+  .login-title,
+  .register-title {
+    font-size: 1.6rem;
+  }
+}

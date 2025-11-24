@@ -1,0 +1,57 @@
+/* ============================================
+   ГЛАВНЫЙ ФАЙЛ СТИЛЕЙ
+   3D Model Shop - Оптимизированная структура CSS
+   ============================================ */
+
+/* 1. Переменные и основа */
+@import url('variables.css');
+@import url('base.css');
+
+/* 2. Layout (структура страницы) */
+@import url('layout.css');
+
+/* 3. Компоненты */
+@import url('components.css');
+
+/* 4. Страничные стили */
+@import url('pages/home.css');
+@import url('pages/auth.css');
+@import url('pages/catalog.css');
+@import url('pages/product.css');
+@import url('pages/cart.css');
+@import url('pages/checkout.css');
+@import url('pages/admin.css');
+@import url('pages/profile.css');
+@import url('pages/404.css');
+
+/* ============================================
+   ИНФОРМАЦИЯ О СТРУКТУРЕ
+
+   Новая структура CSS файлов:
+
+   /css/
+     main.css           - главный файл (вы здесь)
+     variables.css      - CSS переменные, цвета, размеры
+     base.css           - reset, базовые стили
+     layout.css         - header, footer, navigation
+     components.css     - кнопки, формы, карточки, модалки
+
+     /pages/
+       home.css         - главная страница
+       auth.css         - login + register
+       catalog.css      - каталог товаров
+       product.css      - страница товара
+       cart.css         - корзина
+       checkout.css     - оформление заказа
+       admin.css        - админ-панель
+       profile.css      - профиль и заказы
+       404.css          - страница ошибки
+
+   Преимущества новой структуры:
+   - Единая система переменных
+   - Минимум дублирования кода
+   - Легкая поддержка темной темы
+   - Модульная структура
+   - Легко расширяемая система
+
+   ============================================ */

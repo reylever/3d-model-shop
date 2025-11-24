@@ -1,0 +1,146 @@
+/* ============================================
+   CSS ПЕРЕМЕННЫЕ
+   Единая система цветов, размеров и параметров
+   ============================================ */
+
+:root {
+  /* Основные цвета */
+  --color-primary: #0dcaf0;
+  --color-primary-hover: #0bb3d6;
+  --color-primary-light: #e7f6fd;
+
+  --color-success: #28a745;
+  --color-success-light: #d1e7dd;
+  --color-success-dark: #0f5132;
+
+  --color-danger: #dc3545;
+  --color-danger-hover: #c82333;
+  --color-danger-light: #f8d7da;
+  --color-danger-dark: #842029;
+
+  --color-warning: #ffc107;
+  --color-warning-hover: #ffca2c;
+  --color-warning-light: #fff3cd;
+  --color-warning-dark: #856404;
+
+  --color-info: #0dcaf0;
+
+  /* Нейтральные цвета */
+  --color-dark: #212529;
+  --color-gray-900: #212529;
+  --color-gray-800: #333;
+  --color-gray-700: #495057;
+  --color-gray-600: #6c757d;
+  --color-gray-500: #adb5bd;
+  --color-gray-400: #ced4da;
+  --color-gray-300: #dee2e6;
+  --color-gray-200: #e9ecef;
+  --color-gray-100: #f8f9fa;
+  --color-light: #f5f7fa;
+  --color-white: #fff;
+
+  /* Цвета для светлой темы */
+  --bg-primary: #fff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f5f7fa;
+
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-tertiary: #6c757d;
+
+  --border-color: #dee2e6;
+  --border-color-light: #e9ecef;
+
+  --header-bg: #212529;
+  --footer-bg: #212529;
+  --card-bg: #fff;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.2);
+
+  /* Размеры и отступы */
+  --container-max-width: 1400px;
+  --container-padding: 20px;
+
+  --border-radius-sm: 6px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 30px;
+  --spacing-4xl: 40px;
+  --spacing-5xl: 60px;
+
+  /* Типографика */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Z-index */
+  --z-dropdown: 100;
+  --z-sticky: 1000;
+  --z-modal: 10000;
+}
+
+/* Темная тема */
+[data-theme="dark"] {
+  /* Основные цвета остаются теми же */
+  --color-primary: #0dcaf0;
+  --color-primary-hover: #0bb3d6;
+  --color-primary-light: rgba(13, 202, 240, 0.2);
+
+  /* Фоны для темной темы */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #242424;
+
+  /* Текст для темной темы */
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #808080;
+
+  /* Границы для темной темы */
+  --border-color: #404040;
+  --border-color-light: #353535;
+
+  /* Компоненты */
+  --header-bg: #2d2d2d;
+  --footer-bg: #2d2d2d;
+  --card-bg: #2d2d2d;
+
+  /* Тени для темной темы */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.6);
+}

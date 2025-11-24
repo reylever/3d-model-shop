@@ -8,7 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Яшин стаффчик - 3д модели - Регистрация</title>
     
-    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
     <?php include 'includes/header.php' ?>
@@ -42,7 +42,7 @@ session_start();
                     <label for="terms">Я согласен с <a href="#">условиями использования</a></label>
                 </div>
 
-                <button type="submit" class="default_button">Зарегистрироваться</button>
+                <button type="submit" class="btn btn--primary btn--block">Зарегистрироваться</button>
 
                 <p class="register-login">
                     Уже есть аккаунт? <a href="login.php">Войти</a>
